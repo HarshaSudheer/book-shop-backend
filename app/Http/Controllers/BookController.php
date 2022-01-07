@@ -233,4 +233,10 @@ class BookController extends Controller
         $isDeleted = $this->bookService->deleteBook($bookId);
         return response()->json($isDeleted);
     }
+
+    public function searchBook($bookTitle): JsonResponse
+    {
+        $bookList = $this->bookService->searchBook($bookTitle);
+        return response()->json($bookList);
+    }
 }

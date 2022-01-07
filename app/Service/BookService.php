@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Repository\IAuthorRepository;
 use App\Repository\IBookRepository;
+use Illuminate\Support\Collection;
 
 class BookService
 {
@@ -65,5 +66,14 @@ class BookService
             return "Book is updated successfully";
         }
         return "Book is not available";
+    }
+
+    public function searchBook($bookTitle): Collection
+    {
+        $bookList = $this->bookRepository->searchBookByTitle($bookTitle);
+        if($bookList == null){
+            return collect();
+        }
+        return $bookList;
     }
 }

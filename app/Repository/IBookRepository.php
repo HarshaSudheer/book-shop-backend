@@ -12,4 +12,6 @@ interface IBookRepository
     function addBook($bookDetails): bool;
 
     function updateBook($bookId,$title , $price): int;
+
+    function searchBookByTitle($bookTitle);
 }

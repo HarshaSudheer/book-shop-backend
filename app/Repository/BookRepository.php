@@ -34,4 +34,9 @@ class BookRepository implements IBookRepository
     {
         return DB::table('books')->where('books.id', '=', $bookId)->update(['books.title' => $title,'books.price' => $price]);
     }
+
+    public function searchBookByTitle($bookTitle)
+    {
+        return Books::query()->where('books.title','LIKE','%'.$bookTitle.'%')->get();
+    }
 }
